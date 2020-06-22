@@ -83,6 +83,7 @@ public class InstallerHelperService extends AccessibilityService {
 
     private boolean findAndClickView(AccessibilityNodeInfo rootNode, String nodeText) {
         List<AccessibilityNodeInfo> nodeInfoList = rootNode.findAccessibilityNodeInfosByText(nodeText);
+        // vivo升级系统后,安装过程中会推荐多个app进行安装,所以,只有当size为1时进行点击处理,不然,会一下子安装多个推荐的app
         if (nodeInfoList != null && nodeInfoList.size() == 1) {
             for (AccessibilityNodeInfo nodeInfo : nodeInfoList) {
                 nodeInfo.performAction(AccessibilityNodeInfo.ACTION_CLICK);
