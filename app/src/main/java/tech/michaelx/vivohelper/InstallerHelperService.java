@@ -24,13 +24,14 @@ public class InstallerHelperService extends AccessibilityService {
                 findAndClickView(rootNode, "确定");
             }
         } else {
-            List<AccessibilityNodeInfo> appStoreInstallList = rootNode.findAccessibilityNodeInfosByText("商店安装新版本");
+            List<AccessibilityNodeInfo> appStoreInstallList = rootNode.findAccessibilityNodeInfosByText("应用商店安装");
             if (appStoreInstallList != null && appStoreInstallList.size() > 0) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
                         SystemClock.sleep(3000);
                         findAndClickView(rootNode, "继续安装旧版本");
+                        findAndClickView(rootNode, "继续安装");
                     }
                 }).start();
             } else {
